@@ -8,26 +8,24 @@ second largest element, smallest element, second smallest element present in the
 n = int(input("Enter the number of elements: "))
 arr = []
 for i in range(n):
-    num = int(input("Enter element: "))
-    arr.append(num)
+    arr.append(int(input("Enter element: ")))
 
-small = arr[0]
-s_small = arr[0]
-largest = arr[0]
-s_largest = arr[0]
+# 1. Find Smallest and Largest
+small = largest = arr[0]
+for x in arr:
+    if x < small:
+        small = x
+    if x > largest:
+        largest = x
 
-for i in range(1, n):
-    if arr[i] < small:
-        s_small = small
-        small = arr[i]
-    elif arr[i] < s_small and arr[i] != small:
-        s_small = arr[i]
-
-    if arr[i] > largest:
-        s_largest = largest
-        largest = arr[i]
-    elif arr[i] > s_largest and arr[i] != largest:
-        s_largest = arr[i]
+# 2. Find Second Smallest and Second Largest
+s_small = largest
+s_largest = small
+for x in arr:
+    if x < s_small and x != small:
+        s_small = x
+    if x > s_largest and x != largest:
+        s_largest = x
 
 print("Smallest =", small)
 print("Second Smallest =", s_small)
